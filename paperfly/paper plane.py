@@ -10,18 +10,18 @@ pygame.init()
 
 surfaceW = 1000
 surfaceH = 500
-ballonW = 50
-ballonH = 66
+avionW = 50
+avionH = 66
 nuageW = 300
 nuageH = 150
 
 
 surface = pygame.display.set_mode((surfaceW,surfaceH))
-pygame.display.set_caption("Ballon Volant")
+pygame.display.set_caption("Avion Volant")
 clock = pygame.time.Clock()
 
 
-img = pygame.image.load('plane45.png')
+img_avion = pygame.image.load('plane45.png')
 img_nuage01 = pygame.image.load('cloud1.png')
 img_nuage02 = pygame.image.load('cloud1.png')
 
@@ -75,8 +75,8 @@ def msgSurface (texte):
 def gameOver():
     msgSurface("Oups!")
 
-def ballon(x,y, image):
-    surface.blit(image, (x,y))
+def avion(x,y, img_avion):
+    surface.blit(img_avion, (x,y))
 
 def main():
     x=150
@@ -85,7 +85,7 @@ def main():
 
     x_nuage = surfaceW
     y_nuage = randint(-200,100)
-    #espace = ballonH*3
+    #espace = avionH*3
     nuage_vitesse = 6
 
     score_actuel = 0
@@ -106,7 +106,7 @@ def main():
         y += y_move
 
         surface.fill(blue)
-        ballon(x,y,img)
+        avion(x,y,img)
 
         nuages(x_nuage,y_nuage)
 
@@ -124,31 +124,31 @@ def main():
 
             if 3 <= score_actuel < 5:
                 nuage_vitesse = 7
-                #espace = ballonH*2.8
+                #espace = avionH*2.8
             if 5 <= score_actuel < 7 :
                 nuage_vitesse = 8
-                #espace = ballonH*2.7
+                #espace = avionH*2.7
             if 7 <= score_actuel < 10 :
                 nuage_vitesse = 9
-                #espace = ballonH*2.5
+                #espace = avionH*2.5
             if 10 <= score_actuel <22:
                 nuage_vitesse = 11
-                #espace = ballonH*2.2
+                #espace = avionH*2.2
             if 22 <= score_actuel:
                 nuage_vitesse = 13
-                #espace = ballonH*2
+                #espace = avionH*2
 
 
 
-        if x +ballonW > x_nuage + 40 :
-            if y < y_nuage + nuageH  -47:
-                if x - ballonW < x_nuage +nuageW -20 :
+        if x +avionW > x_nuage + 40 : 
+            if y < y_nuage + nuageH  -47: 
+                if x - avionW < x_nuage +nuageW -20 :
                     print("touche haut!!!")
                     #gameOver()
 
-        if x +ballonW >x_nuage + 40 :
-            if y +ballonH > y_nuage + nuageH  :
-                if x -ballonW < x_nuage+ nuageW - 20:
+        if x +avionW >x_nuage + 40 :
+            if y +avionH > y_nuage + nuageH  :
+                if x -avionW < x_nuage+ nuageW - 20:
                     print("touche bas!!!")
                     #gameOver()
 
