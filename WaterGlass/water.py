@@ -8,23 +8,23 @@ white = (255,255,255)
 
 pygame.init()
 
-#initialisation des elements de la partie, taille de l'ecran, ballon, nuages
+#initialisation des elements de la partie, taille de l'ecran, bouteille, verres
 surfaceW = 1000
 surfaceH = 500
-ballonW = 200
-ballonH = 200
-nuageW = 74
-nuageH = 170
+bouteilleW = 200
+bouteilleH = 200
+verreW = 74
+verreH = 170
 check = True
 
 
 
 surface = pygame.display.set_mode((surfaceW,surfaceH))
-pygame.display.set_caption("Ballon Volant")
+pygame.display.set_caption("BouteilleVolant")
 clock = pygame.time.Clock()
 
-img_nuage01 = pygame.image.load('glass.png')
-img = pygame.image.load('plane45.png')
+img_verre01 = pygame.image.load('glass.png')
+img = pygame.image.load('bouteille.png')
 
 
 def score(compte) :
@@ -37,8 +37,8 @@ def timer(compte) :
     texte = police.render('temps:' + str(compte), True, white)
     surface.blit(texte, [100,0])
 
-def nuages1(x_nuage, y_nuage):
-    surface.blit(img_nuage01, (x_nuage, y_nuage))
+def verres1(x_verre, y_verre):
+    surface.blit(img_verre01, (x_verre, y_verre))
 
 
 
@@ -82,7 +82,7 @@ def msgSurface (texte):
 def gameOver():
     msgSurface("Temps ecoule!")
 
-def ballon(x,y, image):
+def bouteille(x,y, image):
     surface.blit(image, (x,y))
 
 
@@ -101,9 +101,9 @@ def main():
         y_move=0
 
 
-        x_nuage = randint(10,300)
-        y_nuage =250
-        #espace = ballonH*3
+        x_verre = randint(10,300)
+        y_verre =250
+        #espace = bouteilleH*3
         score_actuel = 0
 
 
@@ -140,8 +140,8 @@ def main():
 
 
                 surface.fill(blue)
-                nuages1(x_nuage, y_nuage)
-                ballon(x,y,img)
+                verres1(x_verre, y_verre)
+                bouteille(x,y,img)
 
 
 
@@ -158,8 +158,8 @@ def main():
 
 
 
-                if y +ballonH <=y_nuage :
-                    if x >= x_nuage-25 and x+ballonW <= x_nuage+325:
+                if y +bouteilleH <=y_verre :
+                    if x >= x_verre-25 and x+bouteilleW <= x_verre+325:
                         print(score_actuel)
                         score_actuel +=1
                             #gameOver()
